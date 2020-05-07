@@ -1,5 +1,5 @@
 /*
-SQLyog Community v13.1.1 (64 bit)
+SQLyog Ultimate v12.4.3 (64 bit)
 MySQL - 10.4.11-MariaDB : Database - db_buku
 *********************************************************************
 */
@@ -22,53 +22,20 @@ DROP TABLE IF EXISTS `tb_buku`;
 
 CREATE TABLE `tb_buku` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `judul_buku` varchar(255) DEFAULT NULL,
-  `pengarang` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `judul_buku` varchar(100) DEFAULT NULL,
+  `kategori` varchar(100) DEFAULT NULL,
+  `penulis` varchar(100) DEFAULT NULL,
+  `penerbit` varchar(100) DEFAULT NULL,
+  `tahun` int(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_buku` */
 
-insert  into `tb_buku`(`id`,`judul_buku`,`pengarang`,`created_at`,`updated_at`) values 
-(1,'Nyaw','nia','2020-04-24 16:20:29',NULL);
-
-/*Table structure for table `tb_penerbit` */
-
-DROP TABLE IF EXISTS `tb_penerbit`;
-
-CREATE TABLE `tb_penerbit` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_penerbit` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `tb_penerbit` */
-
-insert  into `tb_penerbit`(`id`,`nama_penerbit`,`created_at`,`updated_at`) values 
-(1,'nia','2020-04-24 08:48:35','2020-04-24 08:48:35');
-
-/*Table structure for table `tb_penerbit_detail` */
-
-DROP TABLE IF EXISTS `tb_penerbit_detail`;
-
-CREATE TABLE `tb_penerbit_detail` (
-  `id_penerbit_detail` int(11) NOT NULL AUTO_INCREMENT,
-  `id_buku` int(11) DEFAULT NULL,
-  `id_penerbit` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id_penerbit_detail`),
-  KEY `id_buku` (`id_buku`),
-  KEY `id_penerbit` (`id_penerbit`),
-  CONSTRAINT `tb_penerbit_detail_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tb_penerbit_detail_ibfk_2` FOREIGN KEY (`id_penerbit`) REFERENCES `tb_penerbit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `tb_penerbit_detail` */
+insert  into `tb_buku`(`id`,`judul_buku`,`kategori`,`penulis`,`penerbit`,`tahun`,`created_at`,`updated_at`) values 
+(1,'Dilan : Dia Adalah Dilanku Tahun 1990','Fiksi','Pidi Baiq','Pastel Books',2014,'2020-05-07 08:20:59','2020-05-07 08:20:59');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
